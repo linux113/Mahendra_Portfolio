@@ -188,3 +188,20 @@ main, footer, .nav { position: relative; z-index: 1; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: 0.72rem; font-weight: 500; color: #cfe3ef; background: rgba(13, 26, 38, 0.9); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 999px; padding: 6px 13px; transition: 0.22s; cursor: default; }
 .chip:hover { color: var(--cyan-hot); border-color: var(--cyan); box-shadow: 0 0 14px rgba(0, 229, 255, 0.35); transform: translateY(-2px); }
+
+/* experience */
+.exp-list { max-width: 880px; margin: 0 auto; display: grid; gap: 22px; }
+.exp { background: var(--panel); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 26px 30px; position: relative; overflow: hidden; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+.exp::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--cyan-hot), transparent); }
+.exp:hover { transform: translateY(-5px); border-color: var(--line); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 22px rgba(0, 229, 255, 0.12); }
+.exp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; }
+.exp h3 { font-size: 1.08rem; font-weight: 700; }
+.exp .role { color: var(--cyan); font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
+.exp .period { font-size: 0.68rem; font-weight: 600; letter-spacing: 1px; color: var(--cyan); background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+.exp ul { margin-top: 14px; list-style: none; display: grid; gap: 8px; }
+.exp li { color: var(--muted); font-size: 0.86rem; padding-left: 18px; position: relative; }
+.exp li::before { content: "▸"; position: absolute; left: 0; color: var(--cyan); }
+
+/* overlay link label */
+.cir-row { margin-top: auto; display: flex; align-items: center; gap: 10px; }
+.cir-row em { font-style: normal; color: #fff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.4px; }

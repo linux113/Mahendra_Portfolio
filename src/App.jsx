@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll } from "framer-motion";
-import { DATA, NAV, SKILLS } from "./data.js";
+import { DATA, NAV, SKILLS, EXPERIENCE } from "./data.js";
 
 const REDUCED =
   typeof window !== "undefined" &&
@@ -332,6 +332,37 @@ function Skills() {
   );
 }
 
+function Experience() {
+  return (
+    <section id="experience">
+      <R className="sec-head center">
+        <h2 className="sec-title">Work <span className="c">Experience</span></h2>
+        <p className="sec-sub">3+ years building and shipping cross-platform mobile applications.</p>
+      </R>
+      <div className="exp-list">
+        {EXPERIENCE.map((e, i) => (
+          <R key={e.company} delay={i * 0.1}>
+            <div className="exp">
+              <div className="exp-head">
+                <div>
+                  <h3>{e.company}</h3>
+                  <div className="role">{e.role}</div>
+                </div>
+                <span className="period">{e.period}</span>
+              </div>
+              <ul>
+                {e.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Portfolio() {
   return (
     <section id="portfolio">
@@ -347,7 +378,10 @@ function Portfolio() {
               <div className="ov">
                 <b>{p.title}</b>
                 <p>{p.text}</p>
-                <span className="cir"><Icon id="arrow" /></span>
+                <span className="cir-row">
+                  <span className="cir"><Icon id="arrow" /></span>
+                  <em>{p.linkLabel}</em>
+                </span>
               </div>
               <span className="go" aria-hidden="true"><Icon id="arrow" /></span>
             </a>
@@ -415,6 +449,7 @@ export default function App() {
         <About />
         <Services />
         <Skills />
+        <Experience />
         <Portfolio />
         <Contact />
       </main>

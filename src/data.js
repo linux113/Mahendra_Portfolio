@@ -39,14 +39,16 @@ export const DATA = {
       kind: "Mobile App",
       img: "/img/mock_mobile_a.jpg",
       text: "Cross-platform Flutter application for real-time presentation tracking and management with Firebase sync.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.presentrak.tracker",
     },
     {
       title: "BTConnect CRM",
       kind: "Mobile App",
       img: "/img/mock_mobile_b.jpg",
       text: "Customer Relationship Management mobile application built with Flutter for streamlined business operations.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.btconnect.crm",
     },
     {
       title: "BTROOMER",
@@ -54,7 +56,8 @@ export const DATA = {
       img: "/img/mock_mobile_a.jpg",
       hue: -70,
       text: "Cross-platform mobile application developed with Flutter, featuring clean UI/UX and optimized performance.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.zucolgroup.btroomer",
     },
     {
       title: "Midas Touch BKK",
@@ -62,7 +65,8 @@ export const DATA = {
       img: "/img/mock_mobile_b.jpg",
       hue: 140,
       text: "Feature-rich Flutter application designed for the Midas Touch brand presence in Bangkok.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.midastouch.bkk",
     },
     {
       title: "Midas Touch MT",
@@ -70,7 +74,8 @@ export const DATA = {
       img: "/img/mock_mobile_b.jpg",
       hue: -120,
       text: "Mobile application extension of the Midas Touch brand, delivering a premium user experience.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.midastouch.mt",
     },
     {
       title: "JewelNest",
@@ -78,13 +83,15 @@ export const DATA = {
       img: "/img/mock_mobile_a.jpg",
       hue: 45,
       text: "E-commerce mobile application for the jewelry industry with product catalogs and shopping flow.",
-      link: "https://github.com/mahendraktech-7568",
+      linkLabel: "Google Play",
+      link: "https://play.google.com/store/apps/details?id=com.jewelnest.app",
     },
     {
       title: "Jewels Infotech",
       kind: "Web Platform",
       img: "/img/mock_web_a.jpg",
       text: "Technology & business solutions platform — web design, software, mobile apps, e-commerce, SEO and AI automation.",
+      linkLabel: "Live Website",
       link: "https://jewelsinfotech.com/",
     },
     {
@@ -92,6 +99,7 @@ export const DATA = {
       kind: "Web Platform",
       img: "/img/mock_web_b.jpg",
       text: "Industrial B2B metal supplier website with product catalogs, specifications and enquiry/quote interaction.",
+      linkLabel: "Live Website",
       link: "https://sriyaanmetals.com/",
     },
     {
@@ -100,6 +108,7 @@ export const DATA = {
       img: "/img/mock_web_a.jpg",
       hue: -80,
       text: "Professional web presence for AVYK Jewels showcasing jewelry collections and brand identity.",
+      linkLabel: "Live Website",
       link: "https://avykjewels.com/",
     },
   ],
@@ -116,6 +125,7 @@ export const NAV = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
   { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
   { id: "portfolio", label: "Portfolio" },
   { id: "contact", label: "Contact" },
 ];
@@ -134,4 +144,37 @@ export const SKILLS = [
   { icon: "terminal", title: "Programming", items: ["Python", "JavaScript", "TypeScript", "C#", "Dart", "SQL", "Bash", "PowerShell"] },
   { icon: "network", title: "Networking & IT", items: ["TCP/IP", "DNS", "DHCP", "HTTP/HTTPS", "VPN", "VLAN", "Routing", "Switching", "Active Directory", "System Administration"] },
   { icon: "pen", title: "UI/UX", items: ["Figma", "Responsive Design", "UI/UX", "Design Systems", "Framer Motion"] },
+  { icon: "terminal", title: "Tools & Concepts", items: ["Android Studio", "VS Code", "Postman", "GetX", "Riverpod", "BLoC", "Clean Architecture", "Performance Optimization"] },
+];
+
+export const EXPERIENCE = [
+  {
+    company: "DZAB Soft Pvt. Ltd.",
+    role: "Flutter Developer",
+    period: "May 2025 – Present",
+    points: [
+      "Developing and maintaining cross-platform apps with Flutter",
+      "Implementing APIs, Firebase services, and third-party SDKs",
+      "Improving UI/UX, performance optimization, and deployment",
+    ],
+  },
+  {
+    company: "ZUCOL Solution Pvt. Ltd.",
+    role: "Flutter Developer",
+    period: "Oct 2024 – Apr 2025",
+    points: [
+      "Built and maintained cross-platform apps with new features",
+      "Focused on bug fixing and performance improvements",
+    ],
+  },
+  {
+    company: "R2AVINYA Technology LLP",
+    role: "Flutter Developer",
+    period: "Oct 2022 – Oct 2024",
+    points: [
+      "Designed and launched multiple apps on Google Play Store & App Store",
+      "Implemented clean UI/UX, animations, and robust state management",
+      "Integrated Firebase, REST APIs, and third-party SDKs",
+    ],
+  },
 ];
