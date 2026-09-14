@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll } from "framer-motion";
-import { DATA, NAV } from "./data.js";
+import { DATA, NAV, SKILLS } from "./data.js";
 
 const REDUCED =
   typeof window !== "undefined" &&
@@ -51,6 +51,67 @@ const ICONS = {
       <line x1="12" y1="19" x2="12" y2="5" />
       <polyline points="5 12 12 5 19 12" />
     </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <path d="M12 3a13.5 13.5 0 0 1 0 18 13.5 13.5 0 0 1 0-18z" />
+    </>
+  ),
+  cpu: (
+    <>
+      <rect x="7" y="7" width="10" height="10" rx="2" />
+      <rect x="10.5" y="10.5" width="3" height="3" />
+      <line x1="12" y1="2" x2="12" y2="5" />
+      <line x1="12" y1="19" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="5" y2="12" />
+      <line x1="19" y1="12" x2="22" y2="12" />
+    </>
+  ),
+  cloud: <path d="M7 18a4.5 4.5 0 1 1 .5-8.97A6 6 0 0 1 19 10.5 3.5 3.5 0 0 1 18.5 18H7z" />,
+  server: (
+    <>
+      <rect x="3" y="4" width="18" height="7" rx="2" />
+      <rect x="3" y="13" width="18" height="7" rx="2" />
+      <circle cx="7" cy="7.5" r="0.9" />
+      <circle cx="7" cy="16.5" r="0.9" />
+    </>
+  ),
+  db: (
+    <>
+      <ellipse cx="12" cy="5.5" rx="8" ry="3" />
+      <path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13" />
+      <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+    </>
+  ),
+  devops: (
+    <>
+      <polyline points="23 4 23 10 17 10" />
+      <polyline points="1 20 1 14 7 14" />
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+    </>
+  ),
+  terminal: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <polyline points="7 9 10 12 7 15" />
+      <line x1="12" y1="15" x2="17" y2="15" />
+    </>
+  ),
+  network: (
+    <>
+      <circle cx="12" cy="5" r="2.5" />
+      <circle cx="5" cy="19" r="2.5" />
+      <circle cx="19" cy="19" r="2.5" />
+      <line x1="10.9" y1="7.2" x2="6.1" y2="16.8" />
+      <line x1="13.1" y1="7.2" x2="17.9" y2="16.8" />
+      <line x1="7.5" y1="19" x2="16.5" y2="19" />
+    </>
+  ),
+  pen: <path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />,
+  tool: (
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
   ),
 };
 const Icon = ({ id, ...rest }) => (
@@ -242,6 +303,35 @@ function Services() {
   );
 }
 
+function Skills() {
+  return (
+    <section id="skills">
+      <R className="sec-head center">
+        <h2 className="sec-title">Skills & <span className="c">Technologies</span></h2>
+        <p className="sec-sub">A professional toolkit spanning development, cloud, security and infrastructure.</p>
+      </R>
+      <div className="sk-grid">
+        {SKILLS.map((s, i) => (
+          <R key={s.title} delay={(i % 3) * 0.08}>
+            <div className="sk">
+              <div className="sk-head">
+                <span className="ic"><Icon id={s.icon} /></span>
+                <h3>{s.title}</h3>
+                <span className="cnt">{String(s.items.length).padStart(2, "0")}</span>
+              </div>
+              <div className="chips">
+                {s.items.map((it) => (
+                  <span className="chip" key={it}>{it}</span>
+                ))}
+              </div>
+            </div>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Portfolio() {
   return (
     <section id="portfolio">
@@ -324,6 +414,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <Skills />
         <Portfolio />
         <Contact />
       </main>

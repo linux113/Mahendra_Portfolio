@@ -115,6 +115,23 @@ export const NAV = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
+  { id: "skills", label: "Skills" },
   { id: "portfolio", label: "Portfolio" },
   { id: "contact", label: "Contact" },
+];
+
+export const SKILLS = [
+  { icon: "globe", title: "Web Development", items: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express.js", "REST APIs"] },
+  { icon: "code", title: "Software Development", items: ["Full-Stack Development", "API Development", "Application Development", "Git & GitHub"] },
+  { icon: "cpu", title: ".NET", items: ["C#", ".NET", "ASP.NET Core", "ASP.NET MVC", "Entity Framework", "Web API", "SQL Server"] },
+  { icon: "mobile", title: "Mobile Development", items: ["Flutter", "Dart", "Android Development", "Firebase"] },
+  { icon: "shield", title: "Cybersecurity", items: ["Cybersecurity Consulting", "VAPT", "Web Application Security", "Network Security", "SOC", "SIEM", "Threat Intelligence", "Incident Response", "Security Auditing", "OWASP Top 10"] },
+  { icon: "tool", title: "Security Tools", items: ["Kali Linux", "Nmap", "Wireshark", "Burp Suite", "Metasploit", "Splunk", "Wazuh", "Nessus", "OpenVAS"] },
+  { icon: "cloud", title: "AWS & Cloud", items: ["AWS", "EC2", "S3", "IAM", "VPC", "CloudWatch", "Route 53", "RDS", "Lambda", "Cloud Security"] },
+  { icon: "server", title: "Server & Infrastructure", items: ["Linux", "Windows Server", "Ubuntu", "SSH", "Apache", "Nginx", "IIS", "DNS", "SSL/TLS", "Firewall", "Server Hardening", "VPS", "EC2 Deployment"] },
+  { icon: "db", title: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "SQL Server", "Redis"] },
+  { icon: "devops", title: "DevOps", items: ["Docker", "Docker Compose", "GitHub Actions", "CI/CD", "Nginx", "Vercel", "Hostinger", "AWS Deployment"] },
+  { icon: "terminal", title: "Programming", items: ["Python", "JavaScript", "TypeScript", "C#", "Dart", "SQL", "Bash", "PowerShell"] },
+  { icon: "network", title: "Networking & IT", items: ["TCP/IP", "DNS", "DHCP", "HTTP/HTTPS", "VPN", "VLAN", "Routing", "Switching", "Active Directory", "System Administration"] },
+  { icon: "pen", title: "UI/UX", items: ["Figma", "Responsive Design", "UI/UX", "Design Systems", "Framer Motion"] },
 ];
