@@ -82,16 +82,21 @@ function ContactForm() {
         {["Name", "Email"].map((ph, i) => (
           <motion.div key={ph} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 + i * 0.12, duration: 0.6, ease: EASE }}>
             <div className="relative">
-              <input className="field peer" type={ph === "Email" ? "email" : "text"} placeholder=" " required />
-              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-violet-300/80">
-                <Icon n={ph === "Email" ? "mail" : "code"} className="w-4 h-4" />
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-violet-300/80">
+                <Icon n={ph === "Email" ? "mail" : "person"} className="w-4 h-4" />
               </span>
-              <label className="pointer-events-none absolute left-4 top-0 -translate-y-1/2 scale-75 rounded bg-[#0a0e24] px-1.5 text-[10px] font-bold tracking-[0.18em] text-cyan-300 uppercase opacity-0 transition-opacity peer-placeholder-shown:opacity-0 peer-focus:opacity-100">{ph}</label>
+              <input className="field peer !pl-11 !pr-10" type={ph === "Email" ? "email" : "text"} placeholder={ph} required />
+              <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-violet-300/60">
+                <Icon n={ph === "Email" ? "mail" : "person"} className="w-4 h-4" />
+              </span>
             </div>
           </motion.div>
         ))}
         <motion.div initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.74, duration: 0.6, ease: EASE }}>
-          <textarea className="field" rows={5} placeholder="Message" required />
+          <div className="relative">
+            <span className="pointer-events-none absolute left-4 top-5 text-violet-300/80"><Icon n="chat" className="w-4 h-4" /></span>
+            <textarea className="field !pl-11" rows={5} placeholder="Message" required />
+          </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.9, duration: 0.6, ease: EASE }}>
           <Magnetic className="w-full">
@@ -133,14 +138,14 @@ export function Contact({ mx, my }) {
               <motion.div key={label} variants={fadeUp} custom={3 + i}>
                 <Tilt max={5} className="glass">
                   <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="lift flex items-center gap-4 rounded-2xl px-5 py-4">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-violet-600/40 to-blue-600/30 text-violet-100 shadow-[0_0_20px_rgba(139,92,246,0.45)] transition-transform duration-500 hover:rotate-12">
+                    <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-violet-600 to-blue-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.55)] transition-transform duration-500 hover:rotate-12">
                       <Icon n={ic} className="w-5 h-5" />
                     </span>
                     <span className="min-w-0 flex-1">
                       <b className="block text-[13.5px] text-white">{label}</b>
                       <span className="block truncate text-[12px] text-[#a5a3c7]">{val}</span>
                     </span>
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-slate-300 transition-all duration-300 hover:translate-x-1 hover:text-cyan-300">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-violet-600/85 to-blue-600/85 text-white shadow-[0_0_16px_rgba(139,92,246,0.5)] transition-all duration-300 hover:translate-x-1">
                       <Icon n="arrow" className="w-4 h-4" />
                     </span>
                   </a>

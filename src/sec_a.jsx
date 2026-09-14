@@ -4,6 +4,12 @@ import { DATA } from "./data.js";
 import { EASE, Tilt, Magnetic, Counter, HoloCode, ScanHUD, Icon, useMouse } from "./fx.jsx";
 
 const fadeUp = { hidden: { opacity: 0, y: 34, filter: "blur(6px)" }, show: (i = 0) => ({ opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.85, delay: i * 0.09, ease: EASE } }) };
+const CARD_NEON = [
+  "border-violet-500/55 shadow-[0_0_36px_rgba(139,92,246,0.30)]",
+  "border-cyan-400/55 shadow-[0_0_36px_rgba(34,211,238,0.26)]",
+  "border-fuchsia-500/55 shadow-[0_0_36px_rgba(217,70,239,0.26)]",
+  "border-teal-300/55 shadow-[0_0_36px_rgba(45,212,191,0.26)]",
+];
 
 /* ================================ NAV ================================ */
 export function Nav() {
@@ -113,7 +119,7 @@ export function Hero({ mx, my }) {
             <span className="flex items-center gap-2"><Icon n="shield" className="w-4 h-4 text-cyan-300" /> {DATA.aboutBadge}</span>
           </motion.span>
           <motion.h1 variants={fadeUp} custom={1} className="font-display mt-6 text-[clamp(2.6rem,5.6vw,4.6rem)] font-extrabold leading-[1.05] tracking-tight text-[#f8fafc]">
-            Mahendra <span className="text-grad-pb">Kumar Prajapat</span>
+            Mahendra <span className="text-grad-pm">Kumar Prajapat</span>
           </motion.h1>
           <motion.p variants={fadeUp} custom={2} className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[15px] font-medium text-slate-300">
             {DATA.rolesLine.map((r, i) => (
@@ -126,7 +132,7 @@ export function Hero({ mx, my }) {
             {DATA.desc.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
           </motion.div>
           <motion.div variants={fadeUp} custom={4} className="mt-7 flex flex-wrap gap-3">
-            {DATA.pills.map((p) => (
+            {DATA.pills.slice(0, 4).map((p) => (
               <span key={p} className="neonpill px-4 py-2.5 text-[12.5px] font-semibold text-slate-100">
                 <span className="flex items-center gap-2">
                   {pillLogo[p] && <Icon n={pillLogo[p]} className="w-4 h-4" />}{p}
@@ -148,7 +154,7 @@ export function Hero({ mx, my }) {
           <motion.div key={s.label} initial={{ opacity: 0, y: 46, rotateX: 8, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }} viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, delay: i * 0.1, ease: EASE }} style={{ perspective: 900 }}>
-            <Tilt max={7} className="gborder h-full">
+            <Tilt max={7} className={`h-full rounded-2xl border bg-[rgba(13,16,38,0.62)] backdrop-blur-xl ${CARD_NEON[i]}`}>
               <div className="lift flex h-full flex-col p-6">
                 <div className="flex items-start justify-between">
                   <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet-600/40 to-blue-600/30 text-violet-200 shadow-[0_0_22px_rgba(139,92,246,0.45)] transition-transform duration-500 group-hover:rotate-12">
@@ -168,9 +174,9 @@ export function Hero({ mx, my }) {
       </div>
 
       <div className="mt-20 flex items-center justify-center gap-6">
-        <span className="h-px w-24 bg-gradient-to-r from-transparent to-violet-500/60" />
+        <span className="flex items-center gap-2"><i className="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_8px_#a855f7]" /><span className="h-px w-24 bg-gradient-to-r from-transparent to-violet-500/60" /></span>
         <span className="strip">{DATA.strips.hero}</span>
-        <span className="h-px w-24 bg-gradient-to-l from-transparent to-cyan-500/60" />
+        <span className="flex items-center gap-2"><span className="h-px w-24 bg-gradient-to-l from-transparent to-cyan-500/60" /><i className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" /></span>
       </div>
     </section>
   );

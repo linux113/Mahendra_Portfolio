@@ -105,6 +105,12 @@ export function Portfolio({ mx, my }) {
   const list = filter === "all" ? DATA.projects : DATA.projects.filter((p) => p.filters.includes(filter));
   return (
     <section id="portfolio" className="relative py-28">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <span className="cube floaty absolute left-[2.5%] top-[3%] rotate-12"><Icon n="code" className="w-7 h-7" /></span>
+        <span className="cube floaty d2 absolute right-[3%] top-[5%] -rotate-6"><Icon n="flutter" className="w-7 h-7" /></span>
+        <span className="planet absolute -right-28 top-[14%] h-80 w-80 rounded-full" />
+        <span className="planet absolute -left-44 bottom-[6%] h-96 w-96 rounded-full opacity-25" />
+      </div>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} className="text-center">
           <motion.span variants={fadeUp} className="inline-block rounded-full glass px-5 py-2 text-[11px] font-bold tracking-[0.3em] text-slate-200 uppercase">My Work</motion.span>

@@ -238,5 +238,7 @@ const P = {
   globe: <path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.9 9h-3.4a15 15 0 0 0-1.2-5.2A8 8 0 0 1 19.9 11ZM12 4c.9 1.2 1.9 3.6 2.1 7H9.9C10.1 7.6 11.1 5.2 12 4ZM4.1 13h3.4c.1 1.9.5 3.7 1.2 5.2A8 8 0 0 1 4.1 13Zm3.4-2H4.1a8 8 0 0 1 4.6-5.2A15 15 0 0 0 7.5 11ZM12 20c-.9-1.2-1.9-3.6-2.1-7h4.2c-.2 3.4-1.2 5.8-2.1 7Zm3.3-1.8c.7-1.5 1.1-3.3 1.2-5.2h3.4a8 8 0 0 1-4.6 5.2Z" />,
   shield: <path fill="currentColor" d="M12 1.5 4 5v6.1c0 5 3.4 9.6 8 11.4 4.6-1.8 8-6.4 8-11.4V5l-8-3.5Zm0 2.2 6 2.6v4.8c0 4-2.6 7.7-6 9.3-3.4-1.6-6-5.3-6-9.3V6.3l6-2.6Zm-1 4.3v3H8l4 5v-3h3l-4-5Z" />,
   arrow: <path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6L13 5z" />,
+  person: <path fill="currentColor" d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.2c-4 0-8 2-8 5.3V21h16v-1.5c0-3.3-4-5.3-8-5.3Z" />,
+  chat: <path fill="currentColor" d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2Zm3 5h10v2H7Zm0 4h7v2H7Z" />,
 };
 export const Icon = ({ n, className = "w-5 h-5" }) => <svg viewBox="0 0 24 24" className={className} aria-hidden="true">{P[n]}</svg>;

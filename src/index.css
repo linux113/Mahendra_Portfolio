@@ -56,6 +56,16 @@ body { background: #05050b; color: #f8fafc; font-family: var(--font-body); overf
   -webkit-background-clip: text; background-clip: text; color: transparent; }
 .text-grad-pb { background: linear-gradient(95deg, #a855f7, #6366f1 55%, #22d3ee);
   -webkit-background-clip: text; background-clip: text; color: transparent; }
+.text-grad-pm { background: linear-gradient(95deg, #8b5cf6 5%, #a855f7 45%, #e879f9 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* portfolio backdrop decor */
+.cube { display: grid; place-items: center; width: 76px; height: 76px; border-radius: 20px; color: #c4b5fd;
+  background: linear-gradient(150deg, rgba(139, 92, 246, 0.28), rgba(10, 13, 30, 0.55));
+  border: 1px solid rgba(139, 92, 246, 0.45); backdrop-filter: blur(8px);
+  box-shadow: 0 0 34px rgba(139, 92, 246, 0.35), inset 0 0 22px rgba(139, 92, 246, 0.18); }
+.planet { background: radial-gradient(circle at 34% 30%, rgba(168, 85, 247, 0.55), rgba(38, 24, 74, 0.9) 58%, rgba(10, 8, 24, 0.95));
+  box-shadow: inset -26px -22px 70px rgba(0, 0, 0, 0.65), 0 0 70px rgba(139, 92, 246, 0.35); opacity: 0.45; }
 
 /* animated gradient border (achievement cards / tabs) */
 .gborder { position: relative; border-radius: 1.25rem; background: rgba(10, 13, 30, 0.72); overflow: hidden; }
