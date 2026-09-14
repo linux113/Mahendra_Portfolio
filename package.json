@@ -1,0 +1,24 @@
+{
+  "name": "mahendra-portfolio-3d",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Premium cinematic 3D portfolio of Mahendra Kumar Prajapat — Flutter Developer",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.1.0",
+    "vite": "^6.0.0"
+  }
+}

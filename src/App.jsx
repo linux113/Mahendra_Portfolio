@@ -1,0 +1,513 @@
+import React from "react";
+import { motion, useScroll } from "framer-motion";
+import { DATA, NAV, SKILLS, EXPERIENCE, MARQUEE } from "./data.js";
+
+const REDUCED =
+  typeof window !== "undefined" &&
+  window.matchMedia &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- icons ---------- */
+const ICONS = {
+  github: (
+    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.05.78 2.13v3.16c0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+  ),
+  linkedin: (
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.24 8.31h4.52V23H.24V8.31Zm8.34 0h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.1c0-1.7-.03-3.88-2.36-3.88-2.37 0-2.73 1.85-2.73 3.76V23H8.58V8.31Z" />
+  ),
+  mail: (
+    <path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.3-.2 7.7 6.05 7.7-6.05H4.3ZM20 7.79l-7.38 5.8a1 1 0 0 1-1.24 0L4 7.79V18.5c0 .28.22.5.5.5h15c.28 0 .5-.22.5-.5V7.79Z" />
+  ),
+  phone: (
+    <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
+  ),
+  mobile: (
+    <>
+      <rect x="7" y="2.5" width="10" height="19" rx="2.5" />
+      <line x1="10.5" y1="18.5" x2="13.5" y2="18.5" />
+    </>
+  ),
+  code: (
+    <>
+      <polyline points="8 7 3 12 8 17" />
+      <polyline points="16 7 21 12 16 17" />
+      <line x1="13.5" y1="4.5" x2="10.5" y2="19.5" />
+    </>
+  ),
+  shield: (
+    <>
+      <path d="M12 2.5 4.5 5.5v6c0 4.8 3.2 8.4 7.5 10 4.3-1.6 7.5-5.2 7.5-10v-6L12 2.5Z" />
+      <polyline points="9 11.5 11.2 13.8 15.2 9.5" />
+    </>
+  ),
+  arrow: (
+    <>
+      <line x1="4" y1="20" x2="18" y2="6" />
+      <polyline points="9 6 18 6 18 15" />
+    </>
+  ),
+  up: (
+    <>
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="5 12 12 5 19 12" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <path d="M12 3a13.5 13.5 0 0 1 0 18 13.5 13.5 0 0 1 0-18z" />
+    </>
+  ),
+  cpu: (
+    <>
+      <rect x="7" y="7" width="10" height="10" rx="2" />
+      <rect x="10.5" y="10.5" width="3" height="3" />
+      <line x1="12" y1="2" x2="12" y2="5" />
+      <line x1="12" y1="19" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="5" y2="12" />
+      <line x1="19" y1="12" x2="22" y2="12" />
+    </>
+  ),
+  cloud: <path d="M7 18a4.5 4.5 0 1 1 .5-8.97A6 6 0 0 1 19 10.5 3.5 3.5 0 0 1 18.5 18H7z" />,
+  server: (
+    <>
+      <rect x="3" y="4" width="18" height="7" rx="2" />
+      <rect x="3" y="13" width="18" height="7" rx="2" />
+      <circle cx="7" cy="7.5" r="0.9" />
+      <circle cx="7" cy="16.5" r="0.9" />
+    </>
+  ),
+  db: (
+    <>
+      <ellipse cx="12" cy="5.5" rx="8" ry="3" />
+      <path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13" />
+      <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+    </>
+  ),
+  devops: (
+    <>
+      <polyline points="23 4 23 10 17 10" />
+      <polyline points="1 20 1 14 7 14" />
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+    </>
+  ),
+  terminal: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <polyline points="7 9 10 12 7 15" />
+      <line x1="12" y1="15" x2="17" y2="15" />
+    </>
+  ),
+  network: (
+    <>
+      <circle cx="12" cy="5" r="2.5" />
+      <circle cx="5" cy="19" r="2.5" />
+      <circle cx="19" cy="19" r="2.5" />
+      <line x1="10.9" y1="7.2" x2="6.1" y2="16.8" />
+      <line x1="13.1" y1="7.2" x2="17.9" y2="16.8" />
+      <line x1="7.5" y1="19" x2="16.5" y2="19" />
+    </>
+  ),
+  pen: <path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />,
+  tool: (
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+  ),
+};
+const Icon = ({ id, ...rest }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" {...rest}>
+    {ICONS[id]}
+  </svg>
+);
+
+/* ---------- hooks ---------- */
+function useTypewriter(words) {
+  const [txt, setTxt] = React.useState(REDUCED ? words[0] : "");
+  React.useEffect(() => {
+    if (REDUCED) return;
+    let alive = true, wi = 0, ci = 0, del = false, t;
+    const tick = () => {
+      if (!alive) return;
+      const w = words[wi];
+      ci += del ? -1 : 1;
+      setTxt(w.slice(0, ci));
+      let d = del ? 42 : 92;
+      if (!del && ci === w.length) { d = 1700; del = true; }
+      else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; d = 380; }
+      t = setTimeout(tick, d);
+    };
+    t = setTimeout(tick, 500);
+    return () => { alive = false; clearTimeout(t); };
+  }, [words]);
+  return txt;
+}
+
+function useScrollSpy(ids) {
+  const [active, setActive] = React.useState(ids[0]);
+  React.useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY + window.innerHeight * 0.35;
+      let cur = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) cur = id;
+      }
+      setActive(cur);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [ids]);
+  return active;
+}
+
+/* ---------- reveal wrapper ---------- */
+function R({ children, delay = 0, className }) {
+  if (REDUCED) return <div className={className}>{children}</div>;
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-70px" }}
+      transition={{ duration: 0.65, delay, ease: [0.22, 0.61, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* Shows /img/mahendra.png (the owner's real photo) the moment it exists in the
+   repo; until then falls back to the neon "MP" monogram. */
+function Hex({ alt }) {
+  const [hasPhoto, setHasPhoto] = React.useState(true);
+  return (
+    <div className="hex-wrap">
+      <div className="hex-glow" />
+      <div className="hex-frame" />
+      <div className="hex">
+        {hasPhoto ? (
+          <img src="/img/mahendra.png" alt={alt} onError={() => setHasPhoto(false)} />
+        ) : (
+          <div className="mono" role="img" aria-label={alt}>MP</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ---------- ambient layers ---------- */
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  if (REDUCED) return null;
+  return <motion.div id="progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />;
+}
+
+const BgOrbs = () => (
+  <div className="bg-orbs" aria-hidden="true">
+    <span className="o1" />
+    <span className="o2" />
+    <span className="o3" />
+  </div>
+);
+
+/* ---------- sections ---------- */
+function Nav() {
+  const active = useScrollSpy(NAV.map((n) => n.id));
+  const [open, setOpen] = React.useState(false);
+  return (
+    <header className="nav">
+      <a className="brand" href="#home">Portfolio</a>
+      <button className="nav-toggle" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+        {open ? "✕" : "☰"}
+      </button>
+      <ul className={"nav-links" + (open ? " open" : "")}>
+        {NAV.map((n) => (
+          <li key={n.id}>
+            <a className={active === n.id ? "active" : ""} href={"#" + n.id} onClick={() => setOpen(false)}>
+              {n.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </header>
+  );
+}
+
+function Hero() {
+  const typed = useTypewriter(DATA.roles);
+  return (
+    <section className="hero" id="home">
+      <R>
+        <div className="hi">Hello, It's Me</div>
+        <h1>{DATA.name}</h1>
+        <div className="role">
+          And I'm a <span>{typed}</span>
+          <span className="caret">|</span>
+        </div>
+        <p>{DATA.heroLead}</p>
+        <div className="socials">
+          {DATA.socials.map((s) => (
+            <a key={s.id} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={s.label} title={s.label}>
+              <Icon id={s.id} />
+            </a>
+          ))}
+        </div>
+        <a className="btn-cyan" href={DATA.cv} download>Download CV</a>
+      </R>
+      <R delay={0.15}>
+        <Hex alt="Mahendra Kumar Prajapat" />
+      </R>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="about">
+      <div className="about-grid">
+        <R className="about-col">
+          <Hex alt="About Mahendra Kumar Prajapat" />
+          <a className="btn-cyan" href="mailto:mahendraktech7568@gmail.com?subject=Opportunity">Hire Me</a>
+        </R>
+        <R delay={0.1}>
+          <div className="eyebrow">Who I Am</div>
+          <h2>About <span className="c">Me</span></h2>
+          <div className="sub">{DATA.about.sub}</div>
+          <p>{DATA.about.p1}</p>
+          <p>{DATA.about.p2}</p>
+        </R>
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  return (
+    <section id="services">
+      <R className="sec-head center">
+        <div className="eyebrow">What I Do</div>
+        <h2 className="sec-title">Our <span className="c">Services</span></h2>
+      </R>
+      <div className="svc-grid">
+        {DATA.services.map((s, i) => (
+          <R key={s.title} delay={i * 0.12}>
+            <div className="svc">
+              <span className="ic"><Icon id={s.icon} /></span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+              <a className="btn-mini" href="#contact">Read More</a>
+            </div>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Chips({ items }) {
+  if (REDUCED) {
+    return (
+      <div className="chips">
+        {items.map((it) => (<span className="chip" key={it}>{it}</span>))}
+      </div>
+    );
+  }
+  return (
+    <motion.div
+      className="chips"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.035 } } }}
+    >
+      {items.map((it) => (
+        <motion.span
+          className="chip"
+          key={it}
+          variants={{
+            hidden: { opacity: 0, y: 10, scale: 0.9 },
+            show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 0.61, 0.36, 1] } },
+          }}
+        >
+          {it}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+}
+
+function Skills() {
+  const total = SKILLS.reduce((n, s) => n + s.items.length, 0);
+  return (
+    <section id="skills">
+      <R className="sec-head center">
+        <div className="eyebrow">Technical Arsenal</div>
+        <h2 className="sec-title">Skills & <span className="c">Technologies</span></h2>
+        <p className="sec-sub">A professional toolkit spanning development, cloud, security and infrastructure.</p>
+        <div className="sk-stats">
+          <span><b>{SKILLS.length}</b> Domains</span>
+          <span><b>{total}+</b> Technologies</span>
+          <span><b>3+</b> Years Experience</span>
+        </div>
+      </R>
+      <div className="marquee" aria-hidden="true">
+        <div className="mq-track">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => (
+            <span key={i}>{m}<i>✦</i></span>
+          ))}
+        </div>
+      </div>
+      <div className="sk-grid">
+        {SKILLS.map((s, i) => (
+          <R key={s.title} delay={(i % 3) * 0.08}>
+            <div className="sk">
+              <div className="sk-head">
+                <span className="ic"><Icon id={s.icon} /></span>
+                <h3>{s.title}</h3>
+                <span className="cnt">{String(s.items.length).padStart(2, "0")}</span>
+              </div>
+              <Chips items={s.items} />
+            </div>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Experience() {
+  return (
+    <section id="experience">
+      <R className="sec-head center">
+        <div className="eyebrow">Career Journey</div>
+        <h2 className="sec-title">Work <span className="c">Experience</span></h2>
+        <p className="sec-sub">3+ years building and shipping cross-platform mobile applications.</p>
+      </R>
+      <div className="exp-list">
+        {EXPERIENCE.map((e, i) => (
+          <R key={e.company} delay={i * 0.1}>
+            <div className="exp">
+              <div className="exp-head">
+                <div>
+                  <h3>{e.company}</h3>
+                  <div className="role">{e.role}</div>
+                </div>
+                <span className="period">{e.period}</span>
+              </div>
+              <ul>
+                {e.points.map((pt) => (
+                  <li key={pt}>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Portfolio() {
+  return (
+    <section id="portfolio">
+      <R className="sec-head center">
+        <div className="eyebrow">Selected Work</div>
+        <h2 className="sec-title">Latest <span className="c">Project</span></h2>
+      </R>
+      <div className="prj-grid">
+        {DATA.projects.map((p, i) => (
+          <R key={p.title} delay={(i % 3) * 0.1}>
+            <a className="prj" href={p.link} target="_blank" rel="noreferrer" aria-label={p.title}>
+              <img src={p.img} alt={p.title} style={p.hue ? { filter: `hue-rotate(${p.hue}deg)` } : undefined} loading="lazy" />
+              <span className="badge">{p.kind.toUpperCase()}</span>
+              <div className="ov">
+                <b>{p.title}</b>
+                <p>{p.text}</p>
+                <span className="cir-row">
+                  <span className="cir"><Icon id="arrow" /></span>
+                  <em>{p.linkLabel}</em>
+                </span>
+              </div>
+              <span className="go" aria-hidden="true"><Icon id="arrow" /></span>
+            </a>
+          </R>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const [state, setState] = React.useState("idle"); // idle | sending | sent
+  const submit = (e) => {
+    e.preventDefault();
+    if (state !== "idle") return;
+    setState("sending");
+    setTimeout(() => setState("sent"), 1100);
+  };
+  return (
+    <section id="contact">
+      <R className="sec-head center">
+        <div className="eyebrow">Get In Touch</div>
+        <h2 className="sec-title">Contact <span className="c">Me!</span></h2>
+      </R>
+      <R>
+        <div className="c-panel">
+          <div className="c-info">
+            <a href={"mailto:" + DATA.contact.email}><Icon id="mail" />{DATA.contact.email}</a>
+            <a href="tel:+917568879388"><Icon id="phone" />{DATA.contact.phone}</a>
+            <a href="https://github.com/mahendraktech-7568" target="_blank" rel="noreferrer"><Icon id="github" />{DATA.contact.github}</a>
+          </div>
+          <form className="c-form" onSubmit={submit}>
+          <div className="c-row">
+            <input className="field" name="name" placeholder="Your Name" required />
+            <input className="field" type="email" name="email" placeholder="Email Address" required />
+          </div>
+          <div className="c-row">
+            <input className="field" name="phone" placeholder="Phone Number" />
+            <input className="field" name="subject" placeholder="Email Subject" />
+          </div>
+          <textarea className="field" name="message" placeholder="Your Message" required />
+          <div className="send-wrap">
+            <button className="btn-cyan" type="submit" disabled={state !== "idle"}>
+              {state === "idle" ? "Send Message" : state === "sending" ? "Sending…" : "Message Sent ✓"}
+            </button>
+          </div>
+          </form>
+        </div>
+      </R>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <div>{DATA.footer.replace("Mahendra Kumar Prajapat", "")}<b>Mahendra Kumar Prajapat</b> | All Rights Reserved.</div>
+      <button className="top-btn" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" })}>
+        <Icon id="up" />
+      </button>
+    </footer>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <ScrollProgress />
+      <BgOrbs />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Skills />
+        <Experience />
+        <Portfolio />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
+}
