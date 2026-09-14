@@ -130,6 +130,8 @@ export const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
+export const MARQUEE = ["Flutter", "Dart", "Firebase", "REST APIs", "GetX", "Riverpod", "BLoC", "React", "Next.js", "Node.js", "C#", "ASP.NET Core", "AWS", "Docker", "Kali Linux", "Burp Suite", "MySQL", "MongoDB", "Figma", "TypeScript", "Python", "Linux", "Nginx", "CI/CD"];
+
 export const SKILLS = [
   { icon: "globe", title: "Web Development", items: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express.js", "REST APIs"] },
   { icon: "code", title: "Software Development", items: ["Full-Stack Development", "API Development", "Application Development", "Git & GitHub"] },

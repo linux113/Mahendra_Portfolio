@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll } from "framer-motion";
-import { DATA, NAV, SKILLS, EXPERIENCE } from "./data.js";
+import { DATA, NAV, SKILLS, EXPERIENCE, MARQUEE } from "./data.js";
 
 const REDUCED =
   typeof window !== "undefined" &&
@@ -303,13 +303,59 @@ function Services() {
   );
 }
 
+function Chips({ items }) {
+  if (REDUCED) {
+    return (
+      <div className="chips">
+        {items.map((it) => (<span className="chip" key={it}>{it}</span>))}
+      </div>
+    );
+  }
+  return (
+    <motion.div
+      className="chips"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.035 } } }}
+    >
+      {items.map((it) => (
+        <motion.span
+          className="chip"
+          key={it}
+          variants={{
+            hidden: { opacity: 0, y: 10, scale: 0.9 },
+            show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 0.61, 0.36, 1] } },
+          }}
+        >
+          {it}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+}
+
 function Skills() {
+  const total = SKILLS.reduce((n, s) => n + s.items.length, 0);
   return (
     <section id="skills">
       <R className="sec-head center">
+        <div className="eyebrow">Technical Arsenal</div>
         <h2 className="sec-title">Skills & <span className="c">Technologies</span></h2>
         <p className="sec-sub">A professional toolkit spanning development, cloud, security and infrastructure.</p>
+        <div className="sk-stats">
+          <span><b>{SKILLS.length}</b> Domains</span>
+          <span><b>{total}+</b> Technologies</span>
+          <span><b>3+</b> Years Experience</span>
+        </div>
       </R>
+      <div className="marquee" aria-hidden="true">
+        <div className="mq-track">
+          {[...MARQUEE, ...MARQUEE].map((m, i) => (
+            <span key={i}>{m}<i>✦</i></span>
+          ))}
+        </div>
+      </div>
       <div className="sk-grid">
         {SKILLS.map((s, i) => (
           <R key={s.title} delay={(i % 3) * 0.08}>
@@ -319,11 +365,7 @@ function Skills() {
                 <h3>{s.title}</h3>
                 <span className="cnt">{String(s.items.length).padStart(2, "0")}</span>
               </div>
-              <div className="chips">
-                {s.items.map((it) => (
-                  <span className="chip" key={it}>{it}</span>
-                ))}
-              </div>
+              <Chips items={s.items} />
             </div>
           </R>
         ))}
