@@ -227,3 +227,25 @@ main, footer, .nav { position: relative; z-index: 1; }
 .sk:hover .ic { box-shadow: inset 0 0 14px rgba(0, 229, 255, 0.25), 0 0 18px rgba(0, 229, 255, 0.35); }
 .chip { background: rgba(34, 211, 238, 0.06); border-color: rgba(34, 211, 238, 0.22); }
 .chip:hover { background: var(--cyan-hot); color: #05242c; border-color: var(--cyan-hot); box-shadow: 0 0 18px rgba(0, 229, 255, 0.55); }
+
+/* per-section identity */
+#about { background: radial-gradient(700px 420px at 12% 45%, rgba(0, 229, 255, 0.07), transparent 70%); }
+#services { background-image: radial-gradient(rgba(34, 211, 238, 0.07) 1px, transparent 1.6px); background-size: 28px 28px; }
+#skills { background: radial-gradient(820px 420px at 85% 8%, rgba(34, 211, 238, 0.06), transparent 70%); }
+#experience { background: radial-gradient(720px 420px at 14% 18%, rgba(0, 229, 255, 0.055), transparent 70%); }
+#portfolio { background: radial-gradient(780px 440px at 88% 82%, rgba(0, 229, 255, 0.06), transparent 70%); }
+#contact { background: radial-gradient(820px 480px at 50% 0%, rgba(34, 211, 238, 0.07), transparent 70%); }
+
+/* experience timeline rail */
+.exp-list { position: relative; }
+.exp-list::before { content: ""; position: absolute; left: 10px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(180deg, var(--cyan-hot), rgba(34, 211, 238, 0.04)); box-shadow: 0 0 12px rgba(0, 229, 255, 0.35); }
+.exp { margin-left: 36px; }
+.exp::after { content: ""; position: absolute; left: -31px; top: 32px; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan-hot); box-shadow: 0 0 14px rgba(0, 229, 255, 0.95); }
+
+/* contact glass panel + info links */
+.c-panel { max-width: 940px; margin: 0 auto; background: rgba(22, 32, 46, 0.55); border: 1px solid rgba(34, 211, 238, 0.18); border-radius: 18px; padding: clamp(24px, 4vw, 44px); backdrop-filter: blur(10px); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 0 46px rgba(0, 229, 255, 0.04); }
+.c-panel .c-form { max-width: 100%; margin: 0; }
+.c-info { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 28px; }
+.c-info a { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 500; color: var(--muted); background: rgba(13, 26, 38, 0.65); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; padding: 9px 18px; transition: 0.25s; }
+.c-info a svg { width: 14px; height: 14px; fill: currentColor; }
+.c-info a:hover { color: var(--cyan-hot); border-color: var(--cyan); box-shadow: 0 0 16px rgba(0, 229, 255, 0.4); transform: translateY(-2px); }

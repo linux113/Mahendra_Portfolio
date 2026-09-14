@@ -271,6 +271,7 @@ function About() {
           <a className="btn-cyan" href="mailto:mahendraktech7568@gmail.com?subject=Opportunity">Hire Me</a>
         </R>
         <R delay={0.1}>
+          <div className="eyebrow">Who I Am</div>
           <h2>About <span className="c">Me</span></h2>
           <div className="sub">{DATA.about.sub}</div>
           <p>{DATA.about.p1}</p>
@@ -285,6 +286,7 @@ function Services() {
   return (
     <section id="services">
       <R className="sec-head center">
+        <div className="eyebrow">What I Do</div>
         <h2 className="sec-title">Our <span className="c">Services</span></h2>
       </R>
       <div className="svc-grid">
@@ -378,6 +380,7 @@ function Experience() {
   return (
     <section id="experience">
       <R className="sec-head center">
+        <div className="eyebrow">Career Journey</div>
         <h2 className="sec-title">Work <span className="c">Experience</span></h2>
         <p className="sec-sub">3+ years building and shipping cross-platform mobile applications.</p>
       </R>
@@ -409,6 +412,7 @@ function Portfolio() {
   return (
     <section id="portfolio">
       <R className="sec-head center">
+        <div className="eyebrow">Selected Work</div>
         <h2 className="sec-title">Latest <span className="c">Project</span></h2>
       </R>
       <div className="prj-grid">
@@ -445,10 +449,17 @@ function Contact() {
   return (
     <section id="contact">
       <R className="sec-head center">
+        <div className="eyebrow">Get In Touch</div>
         <h2 className="sec-title">Contact <span className="c">Me!</span></h2>
       </R>
       <R>
-        <form className="c-form" onSubmit={submit}>
+        <div className="c-panel">
+          <div className="c-info">
+            <a href={"mailto:" + DATA.contact.email}><Icon id="mail" />{DATA.contact.email}</a>
+            <a href="tel:+917568879388"><Icon id="phone" />{DATA.contact.phone}</a>
+            <a href="https://github.com/mahendraktech-7568" target="_blank" rel="noreferrer"><Icon id="github" />{DATA.contact.github}</a>
+          </div>
+          <form className="c-form" onSubmit={submit}>
           <div className="c-row">
             <input className="field" name="name" placeholder="Your Name" required />
             <input className="field" type="email" name="email" placeholder="Email Address" required />
@@ -463,7 +474,8 @@ function Contact() {
               {state === "idle" ? "Send Message" : state === "sending" ? "Sending…" : "Message Sent ✓"}
             </button>
           </div>
-        </form>
+          </form>
+        </div>
       </R>
     </section>
   );
