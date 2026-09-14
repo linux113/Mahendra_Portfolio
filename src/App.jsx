@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { DATA, NAV } from "./data.js";
 
 const REDUCED =
@@ -135,6 +135,21 @@ function Hex({ alt }) {
   );
 }
 
+/* ---------- ambient layers ---------- */
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  if (REDUCED) return null;
+  return <motion.div id="progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />;
+}
+
+const BgOrbs = () => (
+  <div className="bg-orbs" aria-hidden="true">
+    <span className="o1" />
+    <span className="o2" />
+    <span className="o3" />
+  </div>
+);
+
 /* ---------- sections ---------- */
 function Nav() {
   const active = useScrollSpy(NAV.map((n) => n.id));
@@ -244,6 +259,7 @@ function Portfolio() {
                 <p>{p.text}</p>
                 <span className="cir"><Icon id="arrow" /></span>
               </div>
+              <span className="go" aria-hidden="true"><Icon id="arrow" /></span>
             </a>
           </R>
         ))}
@@ -301,6 +317,8 @@ function Footer() {
 export default function App() {
   return (
     <>
+      <ScrollProgress />
+      <BgOrbs />
       <Nav />
       <main>
         <Hero />
