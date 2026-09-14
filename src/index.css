@@ -51,6 +51,7 @@ img { display: block; }
 .hex { width: var(--hexw); aspect-ratio: 0.92; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(160deg, #12303c, #0a1a26 60%); position: relative; overflow: hidden; }
 .hex img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: saturate(0.85) contrast(1.06) brightness(0.94); }
 .hex::after { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(0, 229, 255, 0.16), rgba(10, 26, 38, 0.42) 70%); pointer-events: none; }
+.hex .mono { width: 100%; height: 100%; display: grid; place-items: center; font-weight: 800; font-size: calc(var(--hexw) * 0.34); letter-spacing: 4px; color: var(--cyan-hot); text-shadow: 0 0 28px rgba(0, 229, 255, 0.65); }
 .hex-frame { position: absolute; width: calc(var(--hexw) + 24px); aspect-ratio: 0.92; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: linear-gradient(160deg, var(--cyan-hot), #0891b2); z-index: -1; filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.75)); }
 
 /* sections */

@@ -116,15 +116,24 @@ function R({ children, delay = 0, className }) {
   );
 }
 
-const Hex = ({ alt }) => (
-  <div className="hex-wrap">
-    <div className="hex-glow" />
-    <div className="hex-frame" />
-    <div className="hex">
-      <img src="/img/portrait.jpg" alt={alt} />
+/* Shows /img/mahendra.png (the owner's real photo) the moment it exists in the
+   repo; until then falls back to the neon "MP" monogram. */
+function Hex({ alt }) {
+  const [hasPhoto, setHasPhoto] = React.useState(true);
+  return (
+    <div className="hex-wrap">
+      <div className="hex-glow" />
+      <div className="hex-frame" />
+      <div className="hex">
+        {hasPhoto ? (
+          <img src="/img/mahendra.png" alt={alt} onError={() => setHasPhoto(false)} />
+        ) : (
+          <div className="mono" role="img" aria-label={alt}>MP</div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 /* ---------- sections ---------- */
 function Nav() {
