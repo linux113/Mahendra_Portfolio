@@ -65,6 +65,22 @@ export const DATA = {
       link: "https://github.com/mahendraktech-7568",
     },
     {
+      title: "Midas Touch MT",
+      kind: "Mobile App",
+      img: "/img/mock_mobile_b.jpg",
+      hue: -120,
+      text: "Mobile application extension of the Midas Touch brand, delivering a premium user experience.",
+      link: "https://github.com/mahendraktech-7568",
+    },
+    {
+      title: "JewelNest",
+      kind: "Mobile App",
+      img: "/img/mock_mobile_a.jpg",
+      hue: 45,
+      text: "E-commerce mobile application for the jewelry industry with product catalogs and shopping flow.",
+      link: "https://github.com/mahendraktech-7568",
+    },
+    {
       title: "Jewels Infotech",
       kind: "Web Platform",
       img: "/img/mock_web_a.jpg",
@@ -77,6 +93,14 @@ export const DATA = {
       img: "/img/mock_web_b.jpg",
       text: "Industrial B2B metal supplier website with product catalogs, specifications and enquiry/quote interaction.",
       link: "https://sriyaanmetals.com/",
+    },
+    {
+      title: "AVYK Jewels",
+      kind: "Web Platform",
+      img: "/img/mock_web_a.jpg",
+      hue: -80,
+      text: "Professional web presence for AVYK Jewels showcasing jewelry collections and brand identity.",
+      link: "https://avykjewels.com/",
     },
   ],
   contact: {
