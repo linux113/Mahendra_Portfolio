@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahendra Kumar Prajapat — Flutter Developer</title>
+<meta name="description" content="Flutter Developer with 3+ years of experience building cross-platform Android and iOS applications.">
+<meta name="author" content="Mahendra Kumar Prajapat">
+<link rel="canonical" href="https://mahendrakprajapat.dev/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/purple.css">
+</head>
+<body>
+
+<div id="preloader">
+  <div>
+    <div class="pl-1">Welcome To My</div>
+    <div class="pl-2">Portfolio Website</div>
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+
+<div class="bg-scene"></div>
+<div class="bg-grid"></div>
+
+<header class="nav">
+  <a class="brand" href="#home">Mahendra</a>
+  <button class="nav-toggle" aria-label="menu">☰</button>
+  <ul class="nav-links" id="navLinks"></ul>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <span class="pill" id="heroBadge"></span>
+    <h1 id="heroName"></h1>
+    <div class="type-line"><span id="typeTarget"></span><span class="caret">|</span></div>
+    <p class="lead" id="heroLead"></p>
+    <div class="chips" id="heroChips"></div>
+    <div class="hero-cta">
+      <a class="btn btn-fill" href="#portfolio">Projects ↗</a>
+      <a class="btn btn-ghost" href="#contact">Contact ✉</a>
+    </div>
+    <div class="socials" id="socials"></div>
+  </div>
+  <div class="hero-art">
+    <svg class="float" width="330" height="250" viewBox="0 0 330 250" fill="none" aria-hidden="true">
+      <rect x="60" y="40" width="180" height="118" rx="10" fill="#7c5cf0"/>
+      <rect x="70" y="50" width="160" height="98" rx="6" fill="#241a45"/>
+      <rect x="80" y="60" width="70" height="8" rx="4" fill="#2dd4bf"/>
+      <rect x="80" y="76" width="110" height="6" rx="3" fill="#5b4b8a"/>
+      <rect x="80" y="88" width="90" height="6" rx="3" fill="#5b4b8a"/>
+      <rect x="80" y="104" width="46" height="30" rx="5" fill="#2dd4bf" opacity=".85"/>
+      <rect x="134" y="104" width="46" height="30" rx="5" fill="#8b5cf6"/>
+      <rect x="40" y="158" width="220" height="12" rx="6" fill="#9f8df5"/>
+      <rect x="238" y="96" width="46" height="86" rx="8" fill="#5b4b8a"/>
+      <rect x="244" y="104" width="34" height="62" rx="4" fill="#2dd4bf" opacity=".8"/>
+      <rect x="150" y="14" width="60" height="34" rx="6" fill="#2dd4bf"/>
+      <path d="M172 24h16M180 24l-6 8h8l-6 8" stroke="#0b3b36" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="gear" style="top:6%;right:12%" width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9.4 5.5.1-1.5-.1-1.5 2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L16 2h-4l-.4 2.5A7.6 7.6 0 0 0 9 6L6.6 5l-2 3.4 2 1.6-.1 1.5.1 1.5-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5L12 22h4l.4-2.5a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4-2-1.6Z"/></svg>
+    <svg class="gear g2" style="bottom:14%;left:8%" width="46" height="46" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9.4 5.5.1-1.5-.1-1.5 2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L16 2h-4l-.4 2.5A7.6 7.6 0 0 0 9 6L6.6 5l-2 3.4 2 1.6-.1 1.5.1 1.5-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5L12 22h4l.4-2.5a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4-2-1.6Z"/></svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <h3 id="aboutName"></h3>
+      <div id="aboutText"></div>
+      <div class="about-actions">
+        <a class="btn btn-fill" href="mailto:mahendraktech7568@gmail.com?subject=CV%20Request">⬇ Download CV</a>
+        <a class="btn btn-ghost" href="#portfolio">&lt;/&gt; View Projects</a>
+      </div>
+    </div>
+    <div class="avatar-wrap reveal">
+      <div class="avatar-ring"></div>
+      <div class="avatar">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="36" r="17" fill="#0a0613"/><path d="M18 92c4-22 16-32 32-32s28 10 32 32Z" fill="#0a0613"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-head reveal">
+    <div class="sec-title">Career Journey</div>
+    <p class="sec-sub">A progressive journey building cross-platform mobile experiences</p>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- PORTFOLIO SHOWCASE -->
+<section id="portfolio">
+  <div class="sec-head reveal">
+    <div class="sec-title">Portfolio Showcase</div>
+    <p class="sec-sub">Explore my journey through projects, education, and technical expertise. Each section represents a milestone in my continuous learning path.</p>
+  </div>
+
+  <div class="tabs reveal">
+    <button class="tab active" data-tab="projects"><span class="ti">&lt;/&gt;</span>Projects</button>
+    <button class="tab" data-tab="certs"><span class="ti">🎓</span>Certificates</button>
+    <button class="tab" data-tab="tech"><span class="ti">🧰</span>Tech Stack</button>
+  </div>
+
+  <div id="panel-projects">
+    <div class="p-filters" id="pFilters"></div>
+    <div class="grid-cards" id="projGrid"></div>
+  </div>
+  <div id="panel-certs" style="display:none">
+    <div class="edu-grid" id="eduGrid"></div>
+  </div>
+  <div id="panel-tech" style="display:none">
+    <div class="tech-grid" id="techGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head reveal">
+    <div class="sec-title">Contact Me</div>
+    <p class="sec-sub">Got a question? Send me a message, and I'll get back to you soon.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="card reveal">
+      <h4>Get in Touch</h4>
+      <p class="hint">Have something to discuss? Send me a message and let's talk.</p>
+      <form id="contactForm" novalidate>
+        <input class="field" type="text" placeholder="Your Name" required>
+        <input class="field" type="email" placeholder="Your Email" required>
+        <textarea class="field" placeholder="Your Message" required></textarea>
+        <button class="btn btn-fill btn-wide" type="submit">➤ Send Message</button>
+      </form>
+      <div class="connect">
+        <h5>— Connect With Me</h5>
+        <div id="connectList"></div>
+      </div>
+    </div>
+    <div class="card comments reveal">
+      <h4>💬 Comments <span id="cCount">(0)</span></h4>
+      <form id="commentForm" novalidate>
+        <label style="font-size:.7rem;color:var(--muted)">Name *</label>
+        <input class="field" id="cName" type="text" placeholder="Enter your name" required>
+        <label style="font-size:.7rem;color:var(--muted)">Message *</label>
+        <textarea class="field" id="cMsg" placeholder="Write your message here..." required></textarea>
+        <label style="font-size:.7rem;color:var(--muted)">Profile Photo (optional)</label>
+        <div class="photo-pick" id="cPick" data-label="🖼 Choose Profile Photo">🖼 Choose Profile Photo</div>
+        <input type="file" id="cPhoto" accept="image/*" hidden>
+        <div class="photo-note">Max file size: 5MB</div>
+        <button class="btn btn-fill btn-wide" type="submit">➤ Post Comment</button>
+      </form>
+      <div id="cList"></div>
+    </div>
+  </div>
+</section>
+
+<footer id="foot"></footer>
+
+<!-- project detail modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="scrim"></div>
+  <div class="sheet"><div id="modalBody"></div></div>
+</div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/shared.js"></script>
+<script src="../assets/js/purple.js"></script>
+</body>
+</html>

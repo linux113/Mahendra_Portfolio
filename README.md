@@ -1,49 +1,45 @@
-# Mahendra_Portfolio
+# Mahendra_Portfolio — Premium 3D Portfolio
 
-Portfolio of **Mahendra Kumar Prajapat — Flutter Developer**, rebuilt from
-[mahendra-prajapat.youware.app](https://mahendra-prajapat.youware.app) and restyled to match
-the two reference videos (`WhatsApp Video 2026-09-14 at 1.26.56/57 PM.mp4` on `main`).
+Cinematic, premium portfolio of **Mahendra Kumar Prajapat — Flutter Developer**.
 
-## Variants
+- **Live design (v2):** React + Vite + Three.js (WebGL particle universe) + Framer Motion + Tailwind CSS v4.
+  Cinematic AI-rendered 3D workstation hero, mouse-parallax layers, holographic code panel,
+  3D tilt project cards, magnetic buttons, scroll-depth camera, animated counters.
+- **Legacy variants (v1, from the reference videos):** `/legacy/purple.html` and `/legacy/cyan.html`
+  (plain HTML/CSS/JS, content extracted verbatim from
+  [mahendra-prajapat.youware.app](https://mahendra-prajapat.youware.app) — see `docs/source-content.md`).
 
-| File | Design | Reference |
-| --- | --- | --- |
-| `index.html` | **Royal Purple** — gradient glows, grid backdrop, laptop illustration, showcase tabs, project detail modal, comments wall | video 1 |
-| `cyan.html` | **Neon Cyan** — glowing hexagon portrait, typed role line, services cards, project hover grid | video 2 |
-
-Both variants share one content source: `assets/js/data.js`
-(extracted verbatim from the live site — see `docs/source-content.md`).
-
-## Run locally
+## Develop
 
 ```bash
-python3 -m http.server 8080
-# open http://localhost:8080/          (purple)
-# open http://localhost:8080/cyan.html (cyan)
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # outputs dist/
 ```
 
-No build step, no dependencies — plain HTML/CSS/JS.
+Serve the production build:
+
+```bash
+python3 -m http.server 8080 -d dist
+```
 
 ## Structure
 
 ```
-index.html              purple variant
-cyan.html               cyan variant
-assets/css/purple.css   purple theme
-assets/css/cyan.css     cyan theme
-assets/js/data.js       ALL portfolio content (single source of truth)
-assets/js/shared.js     preloader, nav spy, typewriter, counters, comments (localStorage)
-assets/js/purple.js     purple renderer (tabs, filters, project modal)
-assets/js/cyan.js       cyan renderer
-docs/source-content.md  verbatim content extracted from the live site
+index.html            Vite entry
+src/App.jsx           Nav / Hero / About / Portfolio / Contact / Footer
+src/fx.jsx            ParticleField (three.js), Tilt, Magnetic, Counter, HoloCode, logos
+src/data.js           ALL portfolio content (single source of truth)
+src/index.css         Tailwind v4 + custom neon/glass/aurora design system
+public/img/           cinematic 3D workstation render
+public/legacy/        v1 purple & cyan video-matched variants
+public/assets/        v1 css/js
+docs/source-content.md verbatim extraction from the live site
 ```
 
-## Features
+## Performance notes
 
-- Preloader ("Welcome To My Portfolio Website"), scroll-spy nav, mobile menu
-- Typewriter role line, animated stat counters, reveal-on-scroll
-- Project filters (All / Mobile / Web / Business / CRM / E-Commerce) + detail modal
-  with key features, metrics and tech chips
-- Tabs: Projects / Certificates (education) / Tech Stack (CORE–WORKING–EXPLORING)
-- Contact form + guestbook-style comments with optional profile photo (stored locally)
-- Fully responsive (the videos' "phone responsive" behaviour included)
+- three.js is lazy-loaded via dynamic import in a separate chunk; WebGL failures degrade
+  gracefully to the CSS aurora background.
+- `prefers-reduced-motion` disables all animation.
+- Single hero image, system-font fallbacks, code-split vendor chunks.
